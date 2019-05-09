@@ -117,6 +117,19 @@ static NSString *const kAnimationKey = @"RBSOdometerAnimationKey";
     [self createAnimations];
 }
 
+- (void)setupNumberWithoutAnimations:(NSUInteger)number {
+    if ([self allAnimateFinish] == NO) {
+        return;
+    }
+    NSLog(@"[Odometer] %tu", number);
+    _number = number;
+    [self prepareAnimations:YES];
+    if ([self isChangeNumberTextLength]) {
+        [self invalidateIntrinsicContentSize];
+    }
+    [self moveLayersToOrigin];
+}
+
 - (BOOL)isChangeNumberTextLength{
     if (@(self.number).stringValue.length != @(_lastNumber).stringValue.length) {
         return YES;
@@ -286,6 +299,17 @@ static NSString *const kAnimationKey = @"RBSOdometerAnimationKey";
     textlayer.string = text;
     
     return textlayer;
+}
+
+- (void)moveLayersToOrigin {
+
+    CFTimeInterval duration = self.duration - ([_numbersText count] * self.durationOffset);
+    CFTimeInterval offset = 0;
+
+    for(CALayer *scrollLayer in _scrollLayers){
+        CGFloat maxY = [[scrollLayer.sublayers lastObject] frame].origin.y;
+        scrollLayer.sublayerTransform = CATransform3DMakeTranslation(0, -maxY, 0);
+    }
 }
 
 - (void)createAnimations {

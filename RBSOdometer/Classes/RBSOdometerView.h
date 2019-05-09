@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSUInteger density;
 
 - (void)setupNumber:(NSUInteger)number;
+- (void)setupNumberWithoutAnimations:(NSUInteger)number;
 
 @end
 NS_ASSUME_NONNULL_END
