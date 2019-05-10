@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #s.screenshots      = 'https://github.com/RbBtSn0w/RBSOdometer/blob/master/RBSOdometerDemo.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'RbBtSn0w' => 'hamiltonsnow@gmail.com' }
-  s.source           = { :git => 'https://github.com/RbBtSn0w/RBSOdometer.git', :tag => s.version }
+  s.source           = { :git => 'https://github.com/josereyes/RBSOdometer.git', :tag => s.version }
   s.requires_arc     = true
   s.social_media_url = 'https://twitter.com/RbBtSn0w'
 
